@@ -17,7 +17,7 @@ public class tienda {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub1
-	//Scanners
+	//Scanner
 		Scanner sc = new Scanner(System.in);
 		Scanner sc2 = new Scanner(System.in);
 	
