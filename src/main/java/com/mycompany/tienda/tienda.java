@@ -66,6 +66,8 @@ public class tienda {
 		c.add(new Articulo ("0003", "RJ45 2M",  4.50F,50));
 		c.add(new Articulo ("0004", "Raton",  200.00F,15));
                 c.add(new Ropa("rojo", 10, "005", "jersey", 25.50F, 100));
+                c.add(new Electrodomestico("Hogar", ClaseE.A,"0006", "Lavadora", 526.89F, 10));
+                //c.add(new Horno("Negro", "Wz","Hogar", ClaseE.C,"1234", "Horno", 120.03F, 6));
 	}
 	
 	private static void addArticuloCatalogo(ArrayList<Articulo> c, Scanner sc, Scanner sc2) {

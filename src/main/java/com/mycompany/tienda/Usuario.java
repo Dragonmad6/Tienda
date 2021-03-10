@@ -52,7 +52,7 @@ public class Usuario {
     }
     
     //Metodo nombre
-    public boolean nombreUsuario(){
+    public boolean nombreUsuario(String nombre){
         if (nombre.length()<6){
             return false;
         }else{
@@ -60,15 +60,21 @@ public class Usuario {
         }
     }
     //Metodo contraseña correcta
-    public boolean contratrue{
-        if (password >8){
-            return false;
-        }else{
+    public boolean passwordtrue(String password){
+        if(password.length() >= 8){
+            if(password.matches(".*[A-Z].*")){
+            }
             return true;
+        }else{
+            return false;
         }
-        if(password.equals(password.toUpperCase()) ){
-            return ;
-        }else
-            return ;
+    }
+    //Metodo del email
+    public boolean emailVerificado(String email){
+        if(email.matches("[-\\w\\.]+@\\w+\\.\\w+")){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
