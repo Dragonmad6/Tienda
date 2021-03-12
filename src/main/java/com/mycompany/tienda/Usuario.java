@@ -68,6 +68,7 @@ public class Usuario {
         }else{
             return false;
         }
+        //tambien es posible con un "return email.matches(.*@.*) ? 0:1;"
     }
     //Metodo del email
     public boolean emailVerificado(String email){
