@@ -5,6 +5,8 @@
  */
 package com.mycompany.tienda;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author ccalv
@@ -14,7 +16,8 @@ public class Articulo {
 	private String nombre;
 	private float precio;
 	private int stock;
-	
+	private ArrayList <Opinion> opiniones;
+        
 	public Articulo() {
 	}
 	
@@ -23,6 +26,7 @@ public class Articulo {
 		setNombre(nombre);
 		setPrecio(precio);
 		setStock(stock);
+                ArrayList <Opinion> opiniones = new ArrayList <Opinion>(); 
 	}
 	//Getters
 	public String getCodigo() {
@@ -79,6 +83,20 @@ public class Articulo {
 	public void ajustarStock (int cantidad) {
 		this.stock += cantidad;
 	}
-
-}
-
+        
+        public void addOpinion(Opinion op){
+            opiniones.add(op);
+        }
+        public String verOpiniones(){
+            StringBuilder sb = new StringBuilder();
+            for(int i=0; i<opiniones.size();i++){
+                sb.append(opiniones.get(i).toString());
+                sb.append("\n");
+            }
+            return sb.toString();
+        }
+        /*public float mediaOpinion(){
+          for(int i=0; i <opiniones.)
+            
+        }*/
+ }
