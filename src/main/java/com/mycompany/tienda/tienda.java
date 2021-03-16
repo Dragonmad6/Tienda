@@ -37,6 +37,8 @@ public class tienda {
 			System.out.println("1. Dar de alta un articulo");
 			System.out.println("2. Comprar un articulo");
 			System.out.println("3. Confirma compra");
+                        System.out.println("4. Crear usuario");
+                        System.out.println("5. Dar opinion de articulo");
 			System.out.println("0. Salir");
 				opcion = sc2.nextInt();
 			
@@ -51,6 +53,9 @@ public class tienda {
 			case 3:
 				
 				break;
+                        case 4: 
+                                crearUsuario(user,cadenas);
+                         
 			case 0:
 				System.out.println("Gracias por su compra.");
 				break;
@@ -193,8 +198,33 @@ public class tienda {
 		//		MOdificar en el catalogo el stock de los articulos del carrito, retando las cantidades al stock
 		//		Cambiar el estado del carrito a confirmado 
 		//Mostramos mensaje 
-		
 	}
-	
-	
+	private static void crearUsuario (Usuario us, Scanner sn){
+            String nombre,email,pass;
+            do{
+                System.out.println("Dame un nombre de usuario: ");
+                    nombre = sn.nextLine();     
+            }while(!us.nombreUsuario(nombre) == false);
+                
+                us.setNombre(nombre);        
+        }
+        
+        private static void darOpinion (Usuario us, ArrayList<opinion> c, Scanner sc){
+            //mostrar catalogo de articulos
+            //Pedir articulo para dar opinion
+            //Buscar articulos por codigo
+            //En caso de encontrarlo, pedir datos de la opinion y añadirla al listado.
+            //Mostrar articulo y sus opiniones
+            //En caso de no encontrarlo, mostrar mensaje.
+            mostrarCatalogo(c);
+            System.out.println("Elige un articulo e introduce su codigo: ");
+            String codigo = sc.nextLine();
+            Articulo a = buscarArticuloPorCodigo(c, codigo);
+            
+        }
+        
+        private static void crearOpinion(Usuario us, Articulo a, Scanner sc, Scanner sn){
+            System.out.println("Valora del 1 al 7 este articulo: 1:Horrible, 2:Fatal, 3:Regular, 4:Superable, 5:Bien, 6:Notable, 7:Excelente");
+            
+        }
 }
