@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author ccalv
  */
-public class Articulo {
+public abstract class Articulo {
     	private String codigo;
 	private String nombre;
 	private float precio;
@@ -28,6 +28,8 @@ public class Articulo {
 		setStock(stock);
                 ArrayList <Opinion> opiniones = new ArrayList <Opinion>(); 
 	}
+        
+        public abstract void applypromo(String codigopromo);
 	//Getters
 	public String getCodigo() {
 		return codigo;
@@ -95,8 +97,31 @@ public class Articulo {
             }
             return sb.toString();
         }
-        /*public float mediaOpinion(){
-          for(int i=0; i <opiniones.)
-            
-        }*/
+        private float mediaOpinion(){
+            float nota = 0;
+          for(int i=0; i <opiniones.size(); i++){
+            if(opiniones.get(i).getPuntuacion() == Puntuacion.Horrible){
+              nota = nota + 1;
+            }
+            if(opiniones.get(i).getPuntuacion()== Puntuacion.Fatal){
+                nota = nota + 2;
+            }
+            if(opiniones.get(i).getPuntuacion()== Puntuacion.Regular){
+                nota = nota + 3;
+            }
+            if(opiniones.get(i).getPuntuacion()== Puntuacion.Superable){
+                nota = nota + 4;
+            }
+            if(opiniones.get(i).getPuntuacion()== Puntuacion.Bien){
+                nota = nota + 5;
+            }
+            if(opiniones.get(i).getPuntuacion()== Puntuacion.Notable){
+                 nota = nota + 6;               
+            }
+            if(opiniones.get(i).getPuntuacion()== Puntuacion.Excelente){
+                 nota = nota + 5;               
+            }
+          }
+            return nota;
+        }
  }

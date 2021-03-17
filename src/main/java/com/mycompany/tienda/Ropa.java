@@ -24,11 +24,36 @@ public Ropa(String color, int talla,String codigo, String nombre, float precio, 
     this.color = color;
     this.talla = talla;   
 }
+//Getter and Setters
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public int getTalla() {
+        return talla;
+    }
+
+    public void setTalla(int talla) {
+        this.talla = talla;
+    }
+
 //Metodo ToString
 @Override
 public String toString(){
     return super.toString()+"\nColor:"+color+"\nTalla:"+talla+"\n";
 }
 
+@Override
+
+public void applyPromo (String codigopromo){
+    //Si el codigo promocional es "ROPAPROMO" aplico un 20% 
+    if (codigopromo.equals("ROPAPROMO"))
+        this.setPrecio(((float)this.getPrecio()*0.8));
+    
+}
 
 }

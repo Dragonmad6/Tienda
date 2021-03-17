@@ -209,19 +209,19 @@ public class tienda {
                 us.setNombre(nombre);        
         }
         
-        private static void darOpinion (Usuario us, ArrayList<opinion> c, Scanner sc){
+        //private static void darOpinion (Usuario us, ArrayList<opinion> c, Scanner sc){
             //mostrar catalogo de articulos
             //Pedir articulo para dar opinion
             //Buscar articulos por codigo
             //En caso de encontrarlo, pedir datos de la opinion y añadirla al listado.
             //Mostrar articulo y sus opiniones
             //En caso de no encontrarlo, mostrar mensaje.
-            mostrarCatalogo(c);
-            System.out.println("Elige un articulo e introduce su codigo: ");
-            String codigo = sc.nextLine();
-            Articulo a = buscarArticuloPorCodigo(c, codigo);
+          //  mostrarCatalogo(c);
+            //System.out.println("Elige un articulo e introduce su codigo: ");
+            //String codigo = sc.nextLine();
+           // Articulo a = buscarArticuloPorCodigo(c, codigo);
             
-        }
+       // }
         
         private static void crearOpinion(Usuario us, Articulo a, Scanner sc, Scanner sn){
             System.out.println("Valora del 1 al 7 este articulo: 1:Horrible, 2:Fatal, 3:Regular, 4:Superable, 5:Bien, 6:Notable, 7:Excelente");
