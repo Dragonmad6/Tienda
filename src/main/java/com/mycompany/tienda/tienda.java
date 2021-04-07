@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 package com.mycompany.tienda;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
 /**
@@ -39,6 +44,8 @@ public class tienda {
 			System.out.println("3. Confirma compra");
                         System.out.println("4. Crear usuario");
                         System.out.println("5. Dar opinion de articulo");
+                        System.out.println("6. Leer ficheros.");
+                        System.out.pritnln("7. ")
 			System.out.println("0. Salir");
 				opcion = sc2.nextInt();
 			
@@ -54,8 +61,10 @@ public class tienda {
 				
 				break;
                         case 4: 
-                                crearUsuario(user,cadenas);
-                         
+                                //crearUsuario(user,cadenas);
+                        case 6: loadArticulosFromFile();
+                                break;
+                        case 7: 
 			case 0:
 				System.out.println("Gracias por su compra.");
 				break;
@@ -66,13 +75,13 @@ public class tienda {
 		}while(opcion != 0);
 	}
 	private static void inicializaCatalogo(ArrayList<Articulo> c) {
-		c.add(new Articulo ("0001", "Monitor",  200.00F,10));
-		c.add(new Articulo ("0002", "Teclado",  10.00F,100));
-		c.add(new Articulo ("0003", "RJ45 2M",  4.50F,50));
-		c.add(new Articulo ("0004", "Raton",  200.00F,15));
+		//c.add(new Articulo ("0001", "Monitor",  200.00F,10));
+		//c.add(new Articulo ("0002", "Teclado",  10.00F,100));
+		//c.add(new Articulo ("0003", "RJ45 2M",  4.50F,50));
+		//c.add(new Articulo ("0004", "Raton",  200.00F,15));
                 c.add(new Ropa("rojo", 10, "005", "jersey", 25.50F, 100));
                 c.add(new Electrodomestico("Hogar", ClaseE.A,"0006", "Lavadora", 526.89F, 10));
-                //c.add(new Horno("Negro", "Wz","Hogar", ClaseE.C,"1234", "Horno", 120.03F, 6));
+                c.add(new Horno("Negro", "Wz","Hogar", ClaseE.C,"1234", "Horno", 120.03F, 6));
 	}
 	
 	private static void addArticuloCatalogo(ArrayList<Articulo> c, Scanner sc, Scanner sc2) {
@@ -226,5 +235,29 @@ public class tienda {
         private static void crearOpinion(Usuario us, Articulo a, Scanner sc, Scanner sn){
             System.out.println("Valora del 1 al 7 este articulo: 1:Horrible, 2:Fatal, 3:Regular, 4:Superable, 5:Bien, 6:Notable, 7:Excelente");
             
+        }
+        /*Metodo para leer de un ficheros y cargar articulos en catalogo*/
+        public static void loadArticulosFromFile(){
+            File fichero = null;
+            FileReader lector = null;
+            BufferedReader buffer = null;
+            
+            try{
+                buffer = new BufferedReader (new FileReader(new File("Articulos.txt")));
+                String linea = null;
+                while((linea = buffer.readLine()) != null)
+                    System.out.println(linea);
+            }catch (FileNotFoundException fnfe){
+                fnfe.printStackTrace();
+            }catch (IOException ioe){
+                ioe.printStackTrace();
+            }finally{
+                if(buffer != null)
+                try{
+                    buffer.close();
+                }catch (IOException ioe){
+                    ioe.printStackTrace();
+                }
+            }
         }
 }
