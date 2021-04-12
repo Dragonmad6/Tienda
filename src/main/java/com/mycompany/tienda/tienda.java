@@ -8,7 +8,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.ArrayList;
 /**
@@ -45,7 +47,7 @@ public class tienda {
                         System.out.println("4. Crear usuario");
                         System.out.println("5. Dar opinion de articulo");
                         System.out.println("6. Leer ficheros.");
-                        System.out.pritnln("7. ")
+                        System.out.println("7. ");
 			System.out.println("0. Salir");
 				opcion = sc2.nextInt();
 			
@@ -64,7 +66,8 @@ public class tienda {
                                 //crearUsuario(user,cadenas);
                         case 6: loadArticulosFromFile();
                                 break;
-                        case 7: 
+                        case 7: saveFile();
+                                break;
 			case 0:
 				System.out.println("Gracias por su compra.");
 				break;
@@ -243,10 +246,16 @@ public class tienda {
             BufferedReader buffer = null;
             
             try{
+                fichero = new File ("articulos.txt");
+                lector = new FileReader(fichero);
                 buffer = new BufferedReader (new FileReader(new File("Articulos.txt")));
                 String linea = null;
+                String[] nuevaRopa;
+                
                 while((linea = buffer.readLine()) != null)
-                    System.out.println(linea);
+                    nuevaRopa = linea.split(",");
+                    //TODO cargar cada linea creando un objeto Ropa e
+                    //nuevaRopa[]
             }catch (FileNotFoundException fnfe){
                 fnfe.printStackTrace();
             }catch (IOException ioe){
@@ -257,6 +266,28 @@ public class tienda {
                     buffer.close();
                 }catch (IOException ioe){
                     ioe.printStackTrace();
+                }
+            }
+        }
+        public static void saveFile(){
+            FileWriter fichero = null;
+            PrintWriter escritor = null;
+            
+            try{
+                fichero = new FileWriter("articulos2.txt");
+                escritor = new PrintWriter(fichero);
+                //TODO Recorrer catalogo escribiendo cada
+                //articulo en una nueva linea del fichero
+                escritor.println();               
+            }catch (IOException ioe){
+                ioe.printStackTrace();
+            }finally{
+                if(fichero != null){
+                    try{
+                        fichero.close();
+                    }catch (IOException ioe) {
+                        ioe.printStackTrace();
+                    }
                 }
             }
         }
